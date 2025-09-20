@@ -119,9 +119,11 @@ export const SearchSection = ({ onSearchResults, onFilterChange }: SearchSection
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="concert">Concerts</SelectItem>
-              <SelectItem value="recital">Recitals</SelectItem>
-              <SelectItem value="free">Free Events</SelectItem>
+              <SelectItem value="orchestral">Orchestral</SelectItem>
+              <SelectItem value="chamber">Chamber</SelectItem>
+              <SelectItem value="recital">Recital</SelectItem>
+              <SelectItem value="ballet">Ballet</SelectItem>
+              <SelectItem value="opera">Opera</SelectItem>
             </SelectContent>
           </Select>
         </div>
