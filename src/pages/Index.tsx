@@ -4,6 +4,8 @@ import { EventDetailModal } from "@/components/EventDetailModal";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { ChatBot } from "@/components/ChatBot";
+import { SearchSection } from "@/components/SearchSection";
+import { MusicTheorySection } from "@/components/MusicTheorySection";
 import { mockEvents, Event } from "@/data/mockEvents";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -40,6 +42,7 @@ const Index = () => {
         return (
           <div className="space-y-6">
             <HeroSection />
+            <SearchSection />
             <div>
               <h2 className="font-elegant text-xl font-semibold mb-4 text-burgundy">Upcoming Events</h2>
               <div className="space-y-4">
@@ -56,83 +59,7 @@ const Index = () => {
         );
 
       case "journal":
-        return (
-          <div className="space-y-6">
-            <Card className="bg-gradient-subtle">
-              <CardHeader>
-                <CardTitle className="font-elegant text-xl text-burgundy flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Your Concert Journal
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-burgundy">12</div>
-                    <div className="text-sm text-muted-foreground">Concerts</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-gold">8</div>
-                    <div className="text-sm text-muted-foreground">This Year</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">5</div>
-                    <div className="text-sm text-muted-foreground">Badges</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-burgundy">Recent Entries</h3>
-                  <div className="space-y-2">
-                    <div className="p-3 bg-card rounded-lg border border-border/50">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-sm">Mozart Piano Concerto</span>
-                        <span className="text-xs text-muted-foreground">March 10</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">"The piano sounded like liquid gold flowing through the hall. Absolutely magical!"</p>
-                    </div>
-                    <div className="p-3 bg-card rounded-lg border border-border/50">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-sm">Bach & Beyond Recital</span>
-                        <span className="text-xs text-muted-foreground">March 8</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">"First time hearing Goldberg Variations live. Each variation was like a different world!"</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-elegant text-lg text-burgundy flex items-center gap-2">
-                  <Trophy className="w-5 h-5" />
-                  Your Badges
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 gap-3">
-                  <Badge variant="outline" className="justify-center p-2 bg-gold/10 text-burgundy border-gold/30">
-                    <Star className="w-4 h-4 mr-1" />
-                    First Concert
-                  </Badge>
-                  <Badge variant="outline" className="justify-center p-2 bg-accent/10 text-accent-foreground border-accent/30">
-                    <Music className="w-4 h-4 mr-1" />
-                    Mozart Fan
-                  </Badge>
-                  <Badge variant="outline" className="justify-center p-2 bg-burgundy/10 text-burgundy border-burgundy/30">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    Regular Attendee
-                  </Badge>
-                  <Badge variant="outline" className="justify-center p-2 bg-muted/50 text-muted-foreground border-muted">
-                    <Trophy className="w-4 h-4 mr-1" />
-                    Coming Soon...
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        );
+        return <MusicTheorySection />;
 
       case "post":
         return (
@@ -222,8 +149,8 @@ const Index = () => {
                     <span className="font-semibold text-burgundy">12</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">Journal Entries</span>
-                    <span className="font-semibold text-burgundy">8</span>
+            <span className="text-sm">Lessons Completed</span>
+            <span className="font-semibold text-burgundy">4</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm">Badges Earned</span>
