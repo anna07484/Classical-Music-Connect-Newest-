@@ -4,6 +4,7 @@ import { EventDetailModal } from "@/components/EventDetailModal";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { ChatBot } from "@/components/ChatBot";
+import { SearchSection } from "@/components/SearchSection";
 import { mockEvents, Event } from "@/data/mockEvents";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,8 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("discover");
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filteredEvents, setFilteredEvents] = useState(mockEvents);
+  const [searchResults, setSearchResults] = useState<any[]>([]);
   const { toast } = useToast();
 
   const handleEventSelect = (event: Event) => {
@@ -34,16 +37,76 @@ const Index = () => {
     setActiveTab("discover");
   };
 
+  const handleSearchResults = (results: any[]) => {
+    setSearchResults(results);
+  };
+
+  const handleFilterChange = (filters: { city: string; eventType: string }) => {
+    let filtered = [...mockEvents];
+    
+    // Filter by city
+    if (filters.city !== "all") {
+      const cityMap: Record<string, string[]> = {
+        "new-york": ["Carnegie Hall", "Lincoln Center", "Juilliard School", "Manhattan School of Music", "Frick Collection"],
+        "los-angeles": ["Walt Disney Concert Hall", "Hollywood Bowl", "UCLA Royce Hall", "LA Opera"]
+      };
+      
+      const cityVenues = cityMap[filters.city] || [];
+      filtered = filtered.filter(event => 
+        cityVenues.some(venue => event.venue.includes(venue))
+      );
+    }
+    
+    // Filter by event type
+    if (filters.eventType !== "all") {
+      if (filters.eventType === "free") {
+        filtered = filtered.filter(event => event.priceType === "free");
+      } else {
+        filtered = filtered.filter(event => event.category === filters.eventType);
+      }
+    }
+    
+    setFilteredEvents(filtered);
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case "discover":
         return (
           <div className="space-y-6">
             <HeroSection />
+            
+            <SearchSection 
+              onSearchResults={handleSearchResults}
+              onFilterChange={handleFilterChange}
+            />
+            
+            {searchResults.length > 0 && (
+              <div className="mb-6">
+                <h3 className="font-elegant text-lg font-semibold mb-3 text-burgundy">Search Results</h3>
+                <div className="space-y-3">
+                  {searchResults.map((result, index) => (
+                    <div key={index} className="p-4 bg-card rounded-lg border border-border/50">
+                      <h4 className="font-semibold text-burgundy">{result.title}</h4>
+                      <p className="text-sm text-muted-foreground">{result.venue} • {result.location}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{result.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <div>
-              <h2 className="font-elegant text-xl font-semibold mb-4 text-burgundy">Upcoming Events</h2>
+              <h2 className="font-elegant text-xl font-semibold mb-4 text-burgundy">
+                Upcoming Events 
+                {filteredEvents.length !== mockEvents.length && (
+                  <span className="text-sm font-normal text-muted-foreground ml-2">
+                    ({filteredEvents.length} of {mockEvents.length})
+                  </span>
+                )}
+              </h2>
               <div className="space-y-4">
-                {mockEvents.map((event) => (
+                {filteredEvents.map((event) => (
                   <EventCard
                     key={event.id}
                     event={event}

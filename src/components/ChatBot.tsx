@@ -52,23 +52,66 @@ export const ChatBot = () => {
   const getAIResponse = (question: string): string => {
     const q = question.toLowerCase();
     
+    // Music terms with beginner-friendly explanations
     if (q.includes("cadenza")) {
-      return "A cadenza is a virtuosic solo passage, usually near the end of a movement, where the soloist can showcase their technical skill and musical interpretation. Originally improvised, most cadenzas today are written out. Why it matters: It's often the most exciting and impressive part of a concerto!";
+      return "A cadenza is like a musical solo spotlight! It's when the orchestra pauses and the soloist gets to show off with improvised or written passages. Think of it as the classical music equivalent of a guitar solo. Why it matters: It shows the performer's individual artistry and technical skill.";
     }
     
-    if (q.includes("debussy")) {
-      return "Claude Debussy (1862-1918) was a French composer who pioneered Impressionism in music. His works like 'Clair de Lune' use innovative harmonies and textures to create atmospheric 'sound paintings.' Why it matters: He revolutionized how music could express mood and color rather than just traditional melodies.";
+    if (q.includes("motif")) {
+      return "A motif is a short musical idea that composers repeat and transform throughout a piece - like a musical building block. Beethoven's Fifth Symphony starts with the famous 'da-da-da-DUM' motif. Why it matters: Recognizing motifs helps you follow the composer's musical story and development.";
     }
     
     if (q.includes("sonata")) {
-      return "A sonata is a multi-movement work for a solo instrument or instrument with piano. The first movement typically follows 'sonata form' - exposition, development, and recapitulation. Why it matters: It's one of the most important structural forms in classical music, used by Mozart, Beethoven, and countless others.";
+      return "A sonata is like a musical essay with a specific structure: exposition (introducing themes), development (exploring them), and recapitulation (bringing them back). It's the backbone of classical music. Why it matters: Understanding sonata form helps you anticipate and appreciate how the music unfolds.";
+    }
+    
+    if (q.includes("allegro")) {
+      return "Allegro means 'fast and lively' in Italian - it's a tempo marking that tells musicians to play with energy and speed. Most symphonies start with an allegro movement. Why it matters: Tempo markings help you understand the character and mood the composer intended.";
+    }
+    
+    if (q.includes("forte")) {
+      return "Forte means 'loud' in Italian - it's one of the volume markings (dynamics) in classical music. The opposite is piano (soft). Why it matters: Dynamics create drama and emotion - the contrast between loud and soft passages creates musical tension and release.";
+    }
+    
+    // Composers with engaging facts
+    if (q.includes("mozart")) {
+      return "Wolfgang Amadeus Mozart (1756-1791) was a child prodigy who composed over 600 works. His music is known for perfect balance, crystal clarity, and emotional depth hidden beneath elegant surfaces. Fun fact: He wrote his first symphony at age 8! Why he matters: Mozart mastered every musical form and his works are the perfect introduction to classical music.";
+    }
+    
+    if (q.includes("beethoven")) {
+      return "Ludwig van Beethoven (1770-1827) bridged the Classical and Romantic eras, composing some of music's most powerful works despite increasing deafness. His nine symphonies changed music forever. Fun fact: He was completely deaf when he wrote his final symphony! Why he matters: Beethoven showed that music could express the full range of human emotion and struggle.";
+    }
+    
+    if (q.includes("bach")) {
+      return "Johann Sebastian Bach (1685-1750) was a German composer whose mathematical precision and spiritual depth created the foundation of Western classical music. His works are architectural masterpieces. Fun fact: He had 20 children and several became famous composers too! Why he matters: Bach's counterpoint and harmonic innovations influenced every composer who came after him.";
+    }
+    
+    if (q.includes("chopin")) {
+      return "Frédéric Chopin (1810-1849) was a Polish composer who revolutionized piano music. His works are deeply emotional and technically brilliant, often inspired by Polish folk music. Fun fact: He was the first 'rock star' pianist! Why he matters: Chopin showed how the piano could express poetry and deep emotion, not just technical virtuosity.";
+    }
+    
+    if (q.includes("debussy")) {
+      return "Claude Debussy (1862-1918) was a French composer who created musical 'impressionism' - music that captures moods and atmospheres rather than telling specific stories. His music sounds like musical paintings. Fun fact: He was inspired by Asian music at the 1889 Paris World's Fair! Why he matters: Debussy broke traditional rules and opened new possibilities for modern music.";
+    }
+    
+    // Practical advice for beginners
+    if (q.includes("what") && q.includes("listen")) {
+      return "Great question! When listening to classical music, try focusing on: 1) The main melody - can you hum it? 2) How loud or soft it gets (dynamics) 3) The mood - happy, sad, dramatic? 4) Recurring musical ideas (motifs). Why it matters: Active listening turns concerts into engaging musical conversations!";
+    }
+    
+    if (q.includes("nervous") || q.includes("intimidate")) {
+      return "It's totally normal to feel nervous at your first concert! Here's the secret: classical audiences are very welcoming. Just arrive a few minutes early, turn off your phone, and let the music wash over you. Applaud between pieces (not movements). Why it matters: Everyone was a beginner once - the classical community loves welcoming new listeners!";
+    }
+    
+    if (q.includes("dress") || q.includes("wear")) {
+      return "Good news! Most concerts today are business casual - think 'nice dinner out' rather than 'black tie gala.' Dark colors are traditional but not required. The most important thing is feeling comfortable. Fun fact: Audiences used to cheer and talk during concerts! Why it matters: Feeling appropriately dressed helps you focus on the music.";
     }
     
     if (q.includes("symphony")) {
       return "A symphony is a large-scale orchestral work, usually in four movements. It's like a musical journey with different characters - fast, slow, dance-like, and triumphant finale. Why it matters: Symphonies represent the pinnacle of orchestral composition and showcase the full power of the orchestra.";
     }
     
-    return "That's a great question! Classical music has so many fascinating elements. Try asking about specific terms like 'cadenza,' composers like 'Debussy,' or musical forms like 'sonata' or 'symphony.' I'm here to make classical music more approachable for you!";
+    return "That's an interesting question! I specialize in beginner-friendly explanations about classical music terms, composers, and concert etiquette. Try asking me about specific composers like Mozart or Beethoven, musical terms like 'cadenza' or 'motif,' or practical questions about attending concerts. What would you like to explore?";
   };
 
   return (
