@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { EventCard } from "@/components/EventCard";
 import { EventDetailModal } from "@/components/EventDetailModal";
 import { Navigation } from "@/components/Navigation";
