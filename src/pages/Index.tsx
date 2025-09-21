@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { EventCard } from "@/components/EventCard";
 import { EventDetailModal } from "@/components/EventDetailModal";
 import { Navigation } from "@/components/Navigation";
@@ -69,25 +69,44 @@ const Index = () => {
     setFilteredEvents(filtered);
   };
 
-  const renderContent = (results: any[]) => {
+  const renderContent = () => {
     switch (activeTab) {
       case "discover":
         return (
-        <div className="space-y-6">
-          <HeroSection />
-
-          <SearchSection 
-            onSearchResults={handleSearchResults}
-            onFilterChange={handleFilterChange}
-          />
-
-          {results.length > 0 && (
-            <div className="mb-6">
-              <h3 className="font-elegant text-lg font-semibold mb-3 text-burgundy">
-                Search Results
-              </h3>
-              <div className="space-y-3">
-                {results.map((event) => (
+          <div className="space-y-6">
+            <HeroSection />
+            
+            <SearchSection 
+              onSearchResults={handleSearchResults}
+              onFilterChange={handleFilterChange}
+            />
+            
+            {searchResults.length > 0 && (
+              <div className="mb-6">
+                <h3 className="font-elegant text-lg font-semibold mb-3 text-burgundy">Search Results</h3>
+                <div className="space-y-3">
+                  {searchResults.map((result, index) => (
+                    <div key={index} className="p-4 bg-card rounded-lg border border-border/50">
+                      <h4 className="font-semibold text-burgundy">{result.title}</h4>
+                      <p className="text-sm text-muted-foreground">{result.venue} • {result.location}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{result.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <div>
+              <h2 className="font-elegant text-xl font-semibold mb-4 text-burgundy">
+                Upcoming Events 
+                {filteredEvents.length !== mockEvents.length && (
+                  <span className="text-sm font-normal text-muted-foreground ml-2">
+                    ({filteredEvents.length} of {mockEvents.length})
+                  </span>
+                )}
+              </h2>
+              <div className="space-y-4">
+                {filteredEvents.map((event) => (
                   <EventCard
                     key={event.id}
                     event={event}
@@ -96,29 +115,8 @@ const Index = () => {
                 ))}
               </div>
             </div>
-          )}
-
-          <div>
-            <h2 className="font-elegant text-xl font-semibold mb-4 text-burgundy">
-              Upcoming Events 
-              {filteredEvents.length !== mockEvents.length && (
-                <span className="text-sm font-normal text-muted-foreground ml-2">
-                  ({filteredEvents.length} of {mockEvents.length})
-                </span>
-              )}
-            </h2>
-            <div className="space-y-4">
-              {filteredEvents.map((event) => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                  onSelect={handleEventSelect}
-                />
-              ))}
-            </div>
           </div>
-        </div>
-      );
+        );
 
       case "learn":
         return (
@@ -313,7 +311,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <div className="max-w-md mx-auto pb-20">
         <div className="p-4">
-          {renderContent(searchResults)}
+          {renderContent()}
         </div>
       </div>
       
