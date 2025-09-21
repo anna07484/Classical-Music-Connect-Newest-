@@ -21,7 +21,6 @@ const Index = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState(mockEvents);
-  const [searchResults, setSearchResults] = useState<any[]>([]);
   const { toast } = useToast();
 
   const handleEventSelect = (event: Event) => {
@@ -38,7 +37,23 @@ const Index = () => {
   };
 
   const handleSearchResults = (results: any[]) => {
-    setSearchResults(results);
+    // Filter the mock events based on search results
+    if (results.length > 0) {
+      const resultIds = results.map(r => r.id).filter(Boolean);
+      const searchFiltered = mockEvents.filter(event => 
+        resultIds.includes(event.id) || 
+        results.some(result => 
+          event.title.toLowerCase().includes(result.title.toLowerCase()) ||
+          event.venue.toLowerCase().includes(result.venue?.toLowerCase() || '') ||
+          event.composer?.toLowerCase().includes(result.composer?.toLowerCase() || '') ||
+          event.performer?.toLowerCase().includes(result.performer?.toLowerCase() || '')
+        )
+      );
+      setFilteredEvents(searchFiltered);
+    } else {
+      // If no search results, show all events (reset)
+      setFilteredEvents(mockEvents);
+    }
   };
 
   const handleFilterChange = (filters: { city: string; eventType: string }) => {
@@ -80,57 +95,6 @@ const Index = () => {
               onSearchResults={handleSearchResults}
               onFilterChange={handleFilterChange}
             />
-            
-            {searchResults.length > 0 && (
-              <div className="mb-6">
-                <h3 className="font-elegant text-lg font-semibold mb-3 text-burgundy">Search Results</h3>
-                <div className="space-y-4">
-                  {searchResults.map((result, index) => (
-                    <Card key={index} className="group cursor-pointer transition-all duration-300 hover:shadow-elegant hover:-translate-y-1 border-warm-gray/20 bg-gradient-to-br from-card to-cream/50">
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex-1">
-                            <h3 className="font-elegant text-lg font-semibold text-foreground group-hover:text-burgundy transition-colors line-clamp-2">
-                              {result.title}
-                            </h3>
-                            <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
-                              <MapPin className="w-4 h-4" />
-                              <span>{result.venue}</span>
-                              {result.location && (
-                                <>
-                                  <span>•</span>
-                                  <span>{result.location}</span>
-                                </>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      
-                      <CardContent className="pt-0">
-                        {result.description && (
-                          <p className="text-sm text-muted-foreground mb-3">{result.description}</p>
-                        )}
-                        
-                        <div className="flex items-center justify-between">
-                          <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">
-                            Search Result
-                          </Badge>
-                          
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            className="border-burgundy/20 text-burgundy hover:bg-burgundy hover:text-primary-foreground transition-all"
-                          >
-                            View Details
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            )}
             
             <div>
               <h2 className="font-elegant text-xl font-semibold mb-4 text-burgundy">
