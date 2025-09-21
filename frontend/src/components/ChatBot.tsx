@@ -120,7 +120,7 @@ export const ChatBot = () => {
         <CardHeader>
           <CardTitle className="font-elegant text-xl text-burgundy flex items-center gap-2">
             <Bot className="w-5 h-5" />
-            AI Music Mentor
+            Assistant 
           </CardTitle>
         </CardHeader>
         
