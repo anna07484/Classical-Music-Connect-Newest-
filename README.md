@@ -25,3 +25,6 @@ npm run dev
 - React
 - shadcn-ui
 - Tailwind CSS
+
+  <img width="1024" height="1024" alt="logo" src="https://github.com/user-attachments/assets/3805470d-3bc0-4a54-b377-89463e317e22" />
+
