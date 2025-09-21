@@ -47,8 +47,8 @@ const Index = () => {
     // Filter by city
     if (filters.city !== "all") {
       const cityMap: Record<string, string[]> = {
-        "new-york": ["Carnegie Hall", "Lincoln Center", "Juilliard School", "Manhattan School of Music", "Frick Collection"],
-        "los-angeles": ["Walt Disney Concert Hall", "Hollywood Bowl", "UCLA Royce Hall", "LA Opera"]
+        "new-york": ["NY", "NewYork", "Carnegie Hall", "Lincoln Center", "Juilliard School", "Manhattan School of Music", "Frick Collection"],
+        "los-angeles": ["LA", "Los Angeles", "Walt Disney Concert Hall", "Hollywood Bowl", "UCLA Royce Hall", "LA Opera"]
       };
       
       const cityVenues = cityMap[filters.city] || [];
