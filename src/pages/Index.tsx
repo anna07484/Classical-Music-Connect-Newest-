@@ -157,76 +157,107 @@ const Index = () => {
       case "learn":
         return (
           <div className="space-y-6">
+            {/* Hero Section */}
             <Card className="bg-gradient-subtle">
               <CardHeader>
                 <CardTitle className="font-elegant text-xl text-burgundy flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Your Concert Journal
+                  <Music className="w-5 h-5" />
+                  Discover Classical Music
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-burgundy">12</div>
-                    <div className="text-sm text-muted-foreground">Concerts</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-gold">8</div>
-                    <div className="text-sm text-muted-foreground">This Year</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">5</div>
-                    <div className="text-sm text-muted-foreground">Badges</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-burgundy">Recent Entries</h3>
-                  <div className="space-y-2">
-                    <div className="p-3 bg-card rounded-lg border border-border/50">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-sm">Mozart Piano Concerto</span>
-                        <span className="text-xs text-muted-foreground">March 10</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">"The piano sounded like liquid gold flowing through the hall. Absolutely magical!"</p>
+                <p className="text-muted-foreground">Explore the rich world of classical music through composers, forms, and fascinating facts.</p>
+              </CardContent>
+            </Card>
+
+            {/* Composer Spotlight */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="font-elegant text-lg text-burgundy">🎼 Composer of the Week</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-12 h-12 bg-gradient-elegant rounded-full flex items-center justify-center">
+                      <Music className="w-6 h-6 text-primary-foreground" />
                     </div>
-                    <div className="p-3 bg-card rounded-lg border border-border/50">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-sm">Bach & Beyond Recital</span>
-                        <span className="text-xs text-muted-foreground">March 8</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">"First time hearing Goldberg Variations live. Each variation was like a different world!"</p>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-burgundy">Wolfgang Amadeus Mozart</h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Austrian composer (1756-1791) who created over 600 works including symphonies, concertos, and operas. 
+                        Known for his incredible musical genius from a young age.
+                      </p>
+                      <Badge variant="outline" className="mt-2 bg-accent/10 text-accent-foreground border-accent/30">
+                        Classical Period
+                      </Badge>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
+            {/* Musical Forms Explained */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-elegant text-lg text-burgundy flex items-center gap-2">
-                  <Trophy className="w-5 h-5" />
-                  Your Badges
-                </CardTitle>
+                <CardTitle className="font-elegant text-lg text-burgundy">🎻 Learn the Basics</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-3">
-                  <Badge variant="outline" className="justify-center p-2 bg-gold/10 text-burgundy border-gold/30">
-                    <Star className="w-4 h-4 mr-1" />
-                    First Concert
-                  </Badge>
-                  <Badge variant="outline" className="justify-center p-2 bg-accent/10 text-accent-foreground border-accent/30">
-                    <Music className="w-4 h-4 mr-1" />
-                    Mozart Fan
-                  </Badge>
-                  <Badge variant="outline" className="justify-center p-2 bg-burgundy/10 text-burgundy border-burgundy/30">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    Regular Attendee
-                  </Badge>
-                  <Badge variant="outline" className="justify-center p-2 bg-muted/50 text-muted-foreground border-muted">
-                    <Trophy className="w-4 h-4 mr-1" />
-                    Coming Soon...
-                  </Badge>
+                <div className="space-y-3">
+                  <div className="p-3 bg-card rounded-lg border border-border/50">
+                    <h4 className="font-semibold text-sm text-burgundy">Symphony</h4>
+                    <p className="text-xs text-muted-foreground">A large orchestral work, usually in 4 movements, showcasing the full power of an orchestra.</p>
+                  </div>
+                  <div className="p-3 bg-card rounded-lg border border-border/50">
+                    <h4 className="font-semibold text-sm text-burgundy">Concerto</h4>
+                    <p className="text-xs text-muted-foreground">A piece featuring a solo instrument accompanied by an orchestra, highlighting virtuosity.</p>
+                  </div>
+                  <div className="p-3 bg-card rounded-lg border border-border/50">
+                    <h4 className="font-semibold text-sm text-burgundy">Opera</h4>
+                    <p className="text-xs text-muted-foreground">A dramatic work combining singing, orchestral music, and often dance and staging.</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Quick Listening Recommendations */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="font-elegant text-lg text-burgundy">🎧 Listen Now</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="p-3 bg-accent/5 rounded-lg border border-accent/20">
+                    <h4 className="font-semibold text-sm text-burgundy">Top 5 Piano Concertos</h4>
+                    <p className="text-xs text-muted-foreground mb-2">Essential listening for piano lovers</p>
+                    <Button variant="outline" size="sm" className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground">
+                      🎵 Listen on Spotify
+                    </Button>
+                  </div>
+                  <div className="p-3 bg-burgundy/5 rounded-lg border border-burgundy/20">
+                    <h4 className="font-semibold text-sm text-burgundy">Mozart's Greatest Hits</h4>
+                    <p className="text-xs text-muted-foreground mb-2">Perfect introduction to classical music</p>
+                    <Button variant="outline" size="sm" className="border-burgundy/30 text-burgundy hover:bg-burgundy hover:text-primary-foreground">
+                      🎵 Listen on YouTube
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Did You Know Facts */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="font-elegant text-lg text-burgundy">💡 Did You Know?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="p-4 bg-gradient-subtle rounded-lg border border-gold/20">
+                  <p className="text-sm text-foreground font-medium mb-2">🎼 Fun Fact</p>
+                  <p className="text-sm text-muted-foreground">
+                    Beethoven was completely deaf when he composed his legendary 9th Symphony, including the famous "Ode to Joy"!
+                  </p>
+                  <Button variant="ghost" size="sm" className="mt-3 text-xs text-burgundy hover:text-burgundy hover:bg-burgundy/10">
+                    Show me another fact →
+                  </Button>
                 </div>
               </CardContent>
             </Card>
