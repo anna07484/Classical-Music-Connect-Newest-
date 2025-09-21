@@ -27,7 +27,7 @@ export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               key={item.id}
               onClick={() => onTabChange(item.id)}
               className={cn(
-                "flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-colors duration-200 min-w-[60px]",
+                "flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-lg transition-colors duration-200",
                 isActive 
                   ? "text-burgundy bg-burgundy/10" 
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
