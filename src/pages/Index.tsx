@@ -157,19 +157,6 @@ const Index = () => {
       case "learn":
         return (
           <div className="space-y-6">
-            {/* Hero Section */}
-            <Card className="bg-gradient-subtle">
-              <CardHeader>
-                <CardTitle className="font-elegant text-xl text-burgundy flex items-center gap-2">
-                  <Music className="w-5 h-5" />
-                  Discover Classical Music
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Explore the rich world of classical music through composers, forms, and fascinating facts.</p>
-              </CardContent>
-            </Card>
-
             {/* Composer Spotlight */}
             <Card>
               <CardHeader>
@@ -202,18 +189,48 @@ const Index = () => {
                 <CardTitle className="font-elegant text-lg text-burgundy">🎻 Learn the Basics</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="p-3 bg-card rounded-lg border border-border/50">
-                    <h4 className="font-semibold text-sm text-burgundy">Symphony</h4>
-                    <p className="text-xs text-muted-foreground">A large orchestral work, usually in 4 movements, showcasing the full power of an orchestra.</p>
+                    <h4 className="font-semibold text-sm text-burgundy mb-2">Symphony</h4>
+                    <p className="text-xs text-muted-foreground mb-3">A large orchestral work, usually in 4 movements, showcasing the full power of an orchestra.</p>
+                    <iframe 
+                      width="100%" 
+                      height="200" 
+                      src="https://www.youtube.com/embed/Y_5K8f5CZpg" 
+                      title="Symphony Example"
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                      className="rounded-lg"
+                    ></iframe>
                   </div>
                   <div className="p-3 bg-card rounded-lg border border-border/50">
-                    <h4 className="font-semibold text-sm text-burgundy">Concerto</h4>
-                    <p className="text-xs text-muted-foreground">A piece featuring a solo instrument accompanied by an orchestra, highlighting virtuosity.</p>
+                    <h4 className="font-semibold text-sm text-burgundy mb-2">Concerto</h4>
+                    <p className="text-xs text-muted-foreground mb-3">A piece featuring a solo instrument accompanied by an orchestra, highlighting virtuosity.</p>
+                    <iframe 
+                      width="100%" 
+                      height="200" 
+                      src="https://www.youtube.com/embed/0Juq2xF32lo" 
+                      title="Concerto Example"
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                      className="rounded-lg"
+                    ></iframe>
                   </div>
                   <div className="p-3 bg-card rounded-lg border border-border/50">
-                    <h4 className="font-semibold text-sm text-burgundy">Opera</h4>
-                    <p className="text-xs text-muted-foreground">A dramatic work combining singing, orchestral music, and often dance and staging.</p>
+                    <h4 className="font-semibold text-sm text-burgundy mb-2">Opera</h4>
+                    <p className="text-xs text-muted-foreground mb-3">A dramatic work combining singing, orchestral music, and often dance and staging.</p>
+                    <iframe 
+                      width="100%" 
+                      height="200" 
+                      src="https://www.youtube.com/embed/iJrI-PXYA_M?start=2" 
+                      title="Opera Example"
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                      className="rounded-lg"
+                    ></iframe>
                   </div>
                 </div>
               </CardContent>
