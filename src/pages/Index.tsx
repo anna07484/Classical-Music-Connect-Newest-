@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Calendar, Star, Music } from "lucide-react";
+import { Trophy, Calendar, Star, Music, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -84,13 +84,49 @@ const Index = () => {
             {searchResults.length > 0 && (
               <div className="mb-6">
                 <h3 className="font-elegant text-lg font-semibold mb-3 text-burgundy">Search Results</h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {searchResults.map((result, index) => (
-                    <div key={index} className="p-4 bg-card rounded-lg border border-border/50">
-                      <h4 className="font-semibold text-burgundy">{result.title}</h4>
-                      <p className="text-sm text-muted-foreground">{result.venue} • {result.location}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{result.description}</p>
-                    </div>
+                    <Card key={index} className="group cursor-pointer transition-all duration-300 hover:shadow-elegant hover:-translate-y-1 border-warm-gray/20 bg-gradient-to-br from-card to-cream/50">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1">
+                            <h3 className="font-elegant text-lg font-semibold text-foreground group-hover:text-burgundy transition-colors line-clamp-2">
+                              {result.title}
+                            </h3>
+                            <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
+                              <MapPin className="w-4 h-4" />
+                              <span>{result.venue}</span>
+                              {result.location && (
+                                <>
+                                  <span>•</span>
+                                  <span>{result.location}</span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      
+                      <CardContent className="pt-0">
+                        {result.description && (
+                          <p className="text-sm text-muted-foreground mb-3">{result.description}</p>
+                        )}
+                        
+                        <div className="flex items-center justify-between">
+                          <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">
+                            Search Result
+                          </Badge>
+                          
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            className="border-burgundy/20 text-burgundy hover:bg-burgundy hover:text-primary-foreground transition-all"
+                          >
+                            View Details
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               </div>
