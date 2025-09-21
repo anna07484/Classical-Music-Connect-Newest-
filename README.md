@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Classical Music Connect
 
 ## Project info
 
