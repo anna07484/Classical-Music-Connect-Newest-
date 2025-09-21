@@ -2,6 +2,9 @@ services:
   backend:
     build: ./backend
     container_name: backend
+    secrets:
+      - cerebras_api_key
+      - exa_api_key
     ports:
       - "8000:8000"
   
@@ -15,3 +18,9 @@ services:
     depends_on:
       - backend
     command: ["sleep", "infinity"]
+
+secrets:
+  cerebras_api_key:
+    file: ./backend/api_keys/cerebras_api_key
+  exa_api_key:
+    file: ./backend/api_keys/exa_api_key
