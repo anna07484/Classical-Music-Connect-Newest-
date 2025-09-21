@@ -17,27 +17,29 @@ export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-md border-t border-border/50 z-50">
-      <div className="flex items-center justify-around px-4 py-2 max-w-md mx-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = activeTab === item.id;
-          
-          return (
-            <button
-              key={item.id}
-              onClick={() => onTabChange(item.id)}
-              className={cn(
-                "flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-lg transition-colors duration-200",
-                isActive 
-                  ? "text-burgundy bg-burgundy/10" 
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              )}
-            >
-              <Icon className="w-5 h-5" />
-              <span className="text-xs font-medium">{item.label}</span>
-            </button>
-          );
-        })}
+      <div className="flex items-center justify-center px-4 py-3 max-w-md mx-auto">
+        <div className="flex items-center justify-between w-full max-w-sm">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            
+            return (
+              <button
+                key={item.id}
+                onClick={() => onTabChange(item.id)}
+                className={cn(
+                  "flex flex-col items-center justify-center gap-1 flex-1 py-2 rounded-lg transition-colors duration-200",
+                  isActive 
+                    ? "text-burgundy bg-burgundy/10" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                )}
+              >
+                <Icon className="w-5 h-5" />
+                <span className="text-xs font-medium whitespace-nowrap">{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );
