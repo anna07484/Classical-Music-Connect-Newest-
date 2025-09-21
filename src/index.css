@@ -37,9 +37,9 @@ All colors MUST be HSL.
     --ring: 345 75% 35%;
 
     /* Classical Music Theme Colors */
-    --burgundy: 345 85% 25%;
-    --burgundy-light: 345 75% 35%;
-    --burgundy-dark: 345 90% 20%;
+    --burgundy: 345 75% 35%;
+    --burgundy-light: 345 50% 45%;
+    --burgundy-dark: 345 85% 25%;
     --gold: 45 85% 65%;
     --gold-light: 45 90% 75%;
     --gold-dark: 45 80% 55%;
