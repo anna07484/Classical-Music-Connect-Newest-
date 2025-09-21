@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Clock, Heart, BookmarkPlus, Share2, Star } from "lucide-react";
+import { Calendar, MapPin, Clock, Heart, BookmarkPlus, Share2, Star, Ticket } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,15 @@ interface Event {
     listenFor: string;
     funFact: string;
   };
+  // Additional properties for search functionality
+  location?: string;
+  description?: string;
+  type?: string;
+  composer?: string;
+  performer?: string;
+  url?: string;
+  ticketUrl?: string;
+  startDate?: string;
 }
 
 interface EventDetailModalProps {
@@ -61,6 +70,28 @@ export const EventDetailModal = ({ event, isOpen, onClose }: EventDetailModalPro
         description: "Event link copied to clipboard",
       });
     });
+  };
+
+  const handleBookTicket = () => {
+    // For free events, show different behavior
+    if (event.priceType === "free") {
+      toast({
+        title: "Free Event",
+        description: "This is a free event. Just show up at the venue!",
+      });
+      return;
+    }
+    
+    // For ticketed events, try to open ticket URL or show message
+    const ticketUrl = event.ticketUrl || event.url;
+    if (ticketUrl) {
+      window.open(ticketUrl, '_blank');
+    } else {
+      toast({
+        title: "Ticket Information",
+        description: "Please visit the venue's website for ticket information",
+      });
+    }
   };
 
   return (
@@ -153,11 +184,15 @@ export const EventDetailModal = ({ event, isOpen, onClose }: EventDetailModalPro
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3">
+            <Button onClick={handleBookTicket} className="flex-1 min-w-[120px] bg-gradient-elegant hover:opacity-90">
+              <Ticket className="w-4 h-4 mr-2" />
+              {event.priceType === "free" ? "Free Event" : "Book Ticket"}
+            </Button>
             <Button onClick={handleSave} variant="outline" className="flex-1 min-w-[120px]">
               <BookmarkPlus className="w-4 h-4 mr-2" />
               Save Event
             </Button>
-            <Button onClick={handleAttended} className="flex-1 min-w-[120px] bg-gradient-elegant hover:opacity-90">
+            <Button onClick={handleAttended} variant="outline" className="flex-1 min-w-[120px]">
               <Heart className="w-4 h-4 mr-2" />
               I Attended
             </Button>

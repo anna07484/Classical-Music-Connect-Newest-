@@ -14,6 +14,15 @@ export interface Event {
     listenFor: string;
     funFact: string;
   };
+  // Additional properties for search functionality
+  location?: string;
+  description?: string;
+  type?: string;
+  composer?: string;
+  performer?: string;
+  url?: string;
+  ticketUrl?: string;
+  startDate?: string;
 }
 
 export const mockEvents: Event[] = [
