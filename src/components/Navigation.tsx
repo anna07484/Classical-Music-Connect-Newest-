@@ -27,13 +27,13 @@ export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               key={item.id}
               onClick={() => onTabChange(item.id)}
               className={cn(
-                "flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-all duration-200",
+                "flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-colors duration-200 min-w-[60px]",
                 isActive 
                   ? "text-burgundy bg-burgundy/10" 
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               )}
             >
-              <Icon className={cn("w-5 h-5", isActive && "scale-110")} />
+              <Icon className="w-5 h-5" />
               <span className="text-xs font-medium">{item.label}</span>
             </button>
           );

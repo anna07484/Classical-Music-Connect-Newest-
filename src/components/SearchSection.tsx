@@ -207,7 +207,7 @@ export const SearchSection = ({ onSearchResults, onFilterChange }: SearchSection
               size="sm"
               onClick={handleSearch}
               disabled={isSearching || !searchQuery.trim()}
-              className="h-8 px-3 bg-red-600 hover:bg-red-700 text-white"
+              className="h-8 px-3 bg-burgundy hover:bg-burgundy/90 text-white"
             >
               {isSearching ? "Searching..." : "Search"}
             </Button>
@@ -282,13 +282,6 @@ export const SearchSection = ({ onSearchResults, onFilterChange }: SearchSection
         </div>
       )}
 
-      {searchQuery && !isSearching && searchResults.length === 0 && !error && (
-        <div className="text-center py-8 text-muted-foreground">
-          <Music className="w-12 h-12 mx-auto mb-3 opacity-50" />
-          <p>No classical music events found for "{searchQuery}"</p>
-          <p className="text-sm mt-1">Try different search terms or adjust your filters</p>
-        </div>
-      )}
     </div>
   );
 };
