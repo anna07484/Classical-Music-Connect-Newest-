@@ -207,7 +207,7 @@ export const SearchSection = ({ onSearchResults, onFilterChange }: SearchSection
               size="sm"
               onClick={handleSearch}
               disabled={isSearching || !searchQuery.trim()}
-              className="h-8 px-3 bg-burgundy text-white"
+              className="h-8 px-3 bg-burgundy hover:bg-burgundy text-white hover:text-white disabled:bg-burgundy disabled:text-white disabled:opacity-50"
             >
               {isSearching ? "Searching..." : "Search"}
             </Button>
