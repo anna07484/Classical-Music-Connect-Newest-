@@ -118,7 +118,7 @@ const Index = () => {
           </div>
         );
 
-      case "journal":
+      case "learn":
         return (
           <div className="space-y-6">
             <Card className="bg-gradient-subtle">
@@ -256,7 +256,7 @@ const Index = () => {
           </Card>
         );
 
-      case "chat":
+      case "assistant":
         return <ChatBot />;
 
       case "profile":
